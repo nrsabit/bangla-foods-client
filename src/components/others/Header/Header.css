@@ -9,3 +9,7 @@
 .orange{
     color:#F06C22;
 }
+.active{
+    color: #fff;
+    font-weight: bold;
+}

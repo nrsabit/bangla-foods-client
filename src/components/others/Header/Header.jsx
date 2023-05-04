@@ -1,17 +1,14 @@
 import React, { useContext } from 'react';
-import { Button, Container, Image, Nav, Navbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Button, Container, Image, Nav, NavLink, Navbar } from 'react-bootstrap';
 import './Header.css'
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
-    const tooltip = (
-        <Tooltip id="tooltip">
-            {user?.displayName}
-        </Tooltip>
-    );
+    // const {user} = useContext(AuthContext)
+    const user = 'hello'
+    console.log(user)
     return (
         <div>
             <Navbar className='main-nav' collapseOnSelect expand="lg" variant="light">
@@ -20,18 +17,20 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href='/'>Home</Nav.Link>
-
-                            <Nav.Link href='/blogs'>Blogs</Nav.Link>
-
+                            <NavLink to="/" className={({ isActive }) => {
+                                isActive ? "active" : ""
+                            }}>Home</NavLink>
+                            <NavLink to="/blogs" className={({ isActive }) => {
+                                isActive ? "active" : ""
+                            }}>Blogs</NavLink>
                         </Nav>
                         <Nav>
-                            {user && <Nav.Link> <OverlayTrigger placement="bottom" overlay={tooltip}>
+                            {user ? <Nav.Link>
                                 <FaUserCircle></FaUserCircle>
-                            </OverlayTrigger> </Nav.Link>}
-                            {user || <Link to="/login">
-                                <Button variant="outline-dark">Login</Button>
-                            </Link>}
+                            </Nav.Link> :
+                                <Link to="/login">
+                                    <Button variant="outline-dark">Login</Button>
+                                </Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

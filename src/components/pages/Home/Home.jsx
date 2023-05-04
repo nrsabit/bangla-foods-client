@@ -3,7 +3,6 @@ import { Card, Col, Container, Image, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import './Home.css'
 import SingleChef from '../../others/SingleChef/SingleChef';
-import Footer from '../../others/Footer/Footer';
 
 const Home = () => {
     const chefs = useLoaderData();
