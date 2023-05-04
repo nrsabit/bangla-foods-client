@@ -20,7 +20,9 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             <Nav.Link> <FaUserCircle></FaUserCircle> </Nav.Link>
+                            <Link to="/login">
                             <Button variant="outline-dark">Login</Button>
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth"
 import { app } from '../../../firebase/firebase.config';
 
@@ -24,17 +24,19 @@ const AuthProvider = ({ children }) => {
     }
 
     const logIn = (email, password) => {
-        setLoading(true);
+        setLoader(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const googleSignIn = () =>{
+        setLoader(true)
         signInWithPopup(auth, googleProvider)
         .then(result => result.user)
         .catch(error => error.message)
     }
 
     const githubSignIn = () =>{
+        setLoader(true)
         signInWithPopup(auth, githubProvider)
         .then(result => {
             const credential = GithubAuthProvider.credentialFromResult(result);
@@ -45,14 +47,14 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
-        setLoading(true);
+        setLoader(true);
         return signOut(auth);
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, loggedUser => {
             setUser(loggedUser);
-            setLoading(false);
+            setLoader(false);
         })
 
         return () => {
@@ -68,8 +70,6 @@ const AuthProvider = ({ children }) => {
         logOut,
         googleSignIn,
         githubSignIn,
-        user,
-        loader
     }
     return (
         <AuthContext.Provider value={authInfo}>

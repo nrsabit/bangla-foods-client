@@ -4,10 +4,18 @@ import Footer from "../../others/Footer/Footer";
 import Header from "../../others/Header/Header";
 
 const Register = () => {
-
-    const handleSubmit = (e) => {
+    const { createUser,updateUserDetails } = useContext(AuthContext);
+    const handleRegister = (e) => {
         e.preventDefault();
-        // Handle registration submission
+        const form = e.target;
+        const name = form.name.value;
+        const photo = form.photoUrl.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+        .then(result => result.user)
+        .catch(error => error.message)
+        updateUserDetails(name, photo)
     };
 
     return (
@@ -17,7 +25,7 @@ const Register = () => {
                 <Row className="justify-content-center mt-5">
                     <Col md={6}>
                         <h2>Register</h2>
-                        <Form onSubmit={handleSubmit}>
+                        <Form onSubmit={handleRegister}>
                             <Form.Group controlId="email">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control

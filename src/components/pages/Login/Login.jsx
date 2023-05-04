@@ -50,10 +50,10 @@ const Login = () => {
                         </Form>
 
                         <div className="mt-4">
-                            <Button variant="outline-primary" className="me-2" onClick={googleSignIn()}>
+                            <Button variant="outline-primary" className="me-2" onClick={()=> googleSignIn()}>
                                 <FaGoogle /> Log in with Google
                             </Button>
-                            <Button variant="outline-dark" onClick={githubSignIn()}>
+                            <Button variant="outline-dark" onClick={() => githubSignIn()}>
                                 <FaGithub /> Log in with GitHub
                             </Button>
                         </div>
