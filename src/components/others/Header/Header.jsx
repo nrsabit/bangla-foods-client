@@ -1,10 +1,17 @@
-import React from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Button, Container, Image, Nav, Navbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import './Header.css'
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
+    const { user } = useContext(AuthContext)
+    const tooltip = (
+        <Tooltip id="tooltip">
+            {user?.displayName}
+        </Tooltip>
+    );
     return (
         <div>
             <Navbar className='main-nav' collapseOnSelect expand="lg" variant="light">
@@ -19,10 +26,12 @@ const Header = () => {
 
                         </Nav>
                         <Nav>
-                            <Nav.Link> <FaUserCircle></FaUserCircle> </Nav.Link>
-                            <Link to="/login">
-                            <Button variant="outline-dark">Login</Button>
-                            </Link>
+                            {user && <Nav.Link> <OverlayTrigger placement="bottom" overlay={tooltip}>
+                                <FaUserCircle></FaUserCircle>
+                            </OverlayTrigger> </Nav.Link>}
+                            {user || <Link to="/login">
+                                <Button variant="outline-dark">Login</Button>
+                            </Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -3,19 +3,21 @@ import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import Header from "../../others/Header/Header";
 import Footer from "../../others/Footer/Footer";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-    const {logIn, googleSignIn, githubSignIn} = useContext(AuthContext)
+    const [error, setError] = useState('');
+    const { logIn, googleSignIn, githubSignIn } = useContext(AuthContext)
     const handleLogin = (e) => {
         e.preventDefault();
+        setError('');
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         logIn(email, password)
-        .then(result => result)
-        .catch(error => error.message)
+            .then(result => result)
+            .catch(error => setError(error.message))
     };
 
     return (
@@ -31,7 +33,7 @@ const Login = () => {
                                 <Form.Control
                                     type="email"
                                     placeholder="Enter email"
-                                    name="email"
+                                    name="email" required
                                 />
                             </Form.Group>
 
@@ -40,7 +42,7 @@ const Login = () => {
                                 <Form.Control
                                     type="password"
                                     placeholder="Password"
-                                    name="password"
+                                    name="password" required
                                 />
                             </Form.Group>
 
@@ -50,7 +52,7 @@ const Login = () => {
                         </Form>
 
                         <div className="mt-4">
-                            <Button variant="outline-primary" className="me-2" onClick={()=> googleSignIn()}>
+                            <Button variant="outline-primary" className="me-2" onClick={() => googleSignIn()}>
                                 <FaGoogle /> Log in with Google
                             </Button>
                             <Button variant="outline-dark" onClick={() => githubSignIn()}>
@@ -62,6 +64,7 @@ const Login = () => {
                             Don't have an account?
                             <Link style={{ color: '#F06C22', textDecoration: 'none' }} to="/register">Register now</Link>
                         </div>
+                        <p className="text-danger">{error}</p>
                     </Col>
                 </Row>
             </Container>

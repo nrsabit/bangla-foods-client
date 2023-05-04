@@ -2,19 +2,28 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Footer from "../../others/Footer/Footer";
 import Header from "../../others/Header/Header";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
-    const { createUser,updateUserDetails } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const { createUser, updateUserDetails } = useContext(AuthContext);
     const handleRegister = (e) => {
         e.preventDefault();
+        setError('');
         const form = e.target;
         const name = form.name.value;
         const photo = form.photoUrl.value;
         const email = form.email.value;
         const password = form.password.value;
         createUser(email, password)
-        .then(result => result.user)
-        .catch(error => error.message)
+            .then(result => result.user)
+            .catch(error => {
+                setError(error.message);
+                if (password.length < 6) {
+                    setError('Password should be at least 6 characters')
+                }
+            })
         updateUserDetails(name, photo)
     };
 
@@ -31,7 +40,7 @@ const Register = () => {
                                 <Form.Control
                                     type="email"
                                     placeholder="Enter email"
-                                    name="email"
+                                    name="email" required
                                 />
                             </Form.Group>
 
@@ -40,7 +49,7 @@ const Register = () => {
                                 <Form.Control
                                     type="password"
                                     placeholder="Password"
-                                    name="password"
+                                    name="password" required
                                 />
                             </Form.Group>
 
@@ -49,7 +58,7 @@ const Register = () => {
                                 <Form.Control
                                     type="text"
                                     placeholder="Enter your name"
-                                    name="name"
+                                    name="name" required
                                 />
                             </Form.Group>
 
@@ -58,7 +67,7 @@ const Register = () => {
                                 <Form.Control
                                     type="text"
                                     placeholder="Enter the URL of your profile photo"
-                                    name="protoUrl"
+                                    name="protoUrl" required
                                 />
                             </Form.Group>
 
@@ -69,8 +78,9 @@ const Register = () => {
 
                         <div className="mt-4">
                             Already have an account?
-                            <Link style={{color: '#F06C22', textDecoration: 'none'}} to="/login">Login now</Link>
+                            <Link style={{ color: '#F06C22', textDecoration: 'none' }} to="/login">Login now</Link>
                         </div>
+                        <p className="text-danger">{error}</p>
                     </Col>
                 </Row>
             </Container>
