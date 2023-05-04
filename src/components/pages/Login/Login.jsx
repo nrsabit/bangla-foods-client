@@ -3,12 +3,19 @@ import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import Header from "../../others/Header/Header";
 import Footer from "../../others/Footer/Footer";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-
-    const handleSubmit = (e) => {
+    const {logIn, googleSignIn, githubSignIn} = useContext(AuthContext)
+    const handleLogin = (e) => {
         e.preventDefault();
-        // Handle login submission
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        logIn(email, password)
+        .then(result => result)
+        .catch(error => error.message)
     };
 
     return (
@@ -18,7 +25,7 @@ const Login = () => {
                 <Row className="justify-content-center mt-5">
                     <Col md={6}>
                         <h2>Login</h2>
-                        <Form onSubmit={handleSubmit}>
+                        <Form onSubmit={handleLogin}>
                             <Form.Group controlId="email">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control
@@ -43,10 +50,10 @@ const Login = () => {
                         </Form>
 
                         <div className="mt-4">
-                            <Button variant="outline-primary" className="me-2">
+                            <Button variant="outline-primary" className="me-2" onClick={googleSignIn()}>
                                 <FaGoogle /> Log in with Google
                             </Button>
-                            <Button variant="outline-dark">
+                            <Button variant="outline-dark" onClick={githubSignIn()}>
                                 <FaGithub /> Log in with GitHub
                             </Button>
                         </div>
