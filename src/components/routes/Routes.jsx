@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import NotFound from "../pages/NotFound/NotFound";
 import Blogs from "../pages/Blogs/Blogs";
+import PrivateRoutes from "./PrivateRoutes";
 
 
   const router = createBrowserRouter([
@@ -21,7 +22,7 @@ import Blogs from "../pages/Blogs/Blogs";
             },
             {
                 path: '/chefs/:id',
-                element: <Chef></Chef>,
+                element: <PrivateRoutes><Chef></Chef></PrivateRoutes>,
                 loader: ({params}) => fetch(`https://bangla-foods-server-nrsabit.vercel.app/chefs/${params.id}`)
             },
             {

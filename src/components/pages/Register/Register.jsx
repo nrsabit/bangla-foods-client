@@ -1,11 +1,12 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../others/Footer/Footer";
 import Header from "../../others/Header/Header";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
+    const navigate = useNavigate()
     const [error, setError] = useState('');
     const { createUser, updateUserDetails } = useContext(AuthContext);
     const handleRegister = (e) => {
@@ -17,7 +18,7 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         createUser(email, password)
-            .then(result => result.user)
+            .then(result => navigate('/'))
             .catch(error => {
                 setError(error.message);
                 if (password.length < 6) {

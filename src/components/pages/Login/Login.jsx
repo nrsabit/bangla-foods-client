@@ -1,5 +1,5 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import Header from "../../others/Header/Header";
 import Footer from "../../others/Footer/Footer";
@@ -8,6 +8,9 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
     const { logIn, googleSignIn, githubSignIn } = useContext(AuthContext)
     const handleLogin = (e) => {
         e.preventDefault();
@@ -16,14 +19,17 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         logIn(email, password)
-            .then(result => result)
+            .then(result => navigate(from))
             .catch(error => setError(error.message))
     };
     const handleGoogleSignIn = () =>{
         googleSignIn()
+        .then(res => navigate(from))
+        
     }
     const handleGithubSignIn = () =>{
         githubSignIn()
+        .then(res => navigate(from))
     }
 
     return (
