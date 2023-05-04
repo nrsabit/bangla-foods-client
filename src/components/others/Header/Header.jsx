@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
-    // const {user} = useContext(AuthContext)
-    const user = 'hello'
-    console.log(user)
+    const {user} = useContext(AuthContext)
     return (
         <div>
             <Navbar className='main-nav' collapseOnSelect expand="lg" variant="light">
