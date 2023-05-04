@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { Button, Container, Image, Nav, NavLink, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import './Header.css'
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import ActiveLink from '../ActiveLink/ActiveLink';
 
 const Header = () => {
     const {user} = useContext(AuthContext)
@@ -14,13 +15,9 @@ const Header = () => {
                     <Navbar.Brand className='text-white fw-bolder'>Bangla<span className='logo-food'>Foods</span></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
-                            <NavLink to="/" className={({ isActive }) => {
-                                isActive ? "active" : ""
-                            }}>Home</NavLink>
-                            <NavLink to="/blogs" className={({ isActive }) => {
-                                isActive ? "active" : ""
-                            }}>Blogs</NavLink>
+                        <Nav className="me-auto nav-link-item">
+                            <ActiveLink to="/">Home</ActiveLink>
+                            <ActiveLink to="/blogs">Blogs</ActiveLink>
                         </Nav>
                         <Nav>
                             {user ? <Nav.Link>

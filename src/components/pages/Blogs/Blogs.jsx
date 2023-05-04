@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 const Blogs = () => {
     return (
-        <Container>
+        <Container className='mt-5'>
             <Row>
                 <Col>
                     <h2>Tell us the differences between uncontrolled and controlled components.</h2>

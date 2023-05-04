@@ -10,6 +10,11 @@
     color:#F06C22;
 }
 .active{
-    color: #fff;
+    color: #fff !important;
     font-weight: bold;
+}
+.nav-link-item a{
+    text-decoration: none;
+    margin-right: 10px;
+    color: black;
 }
