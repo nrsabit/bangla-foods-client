@@ -20,7 +20,8 @@ import NotFound from "../pages/NotFound/NotFound";
             },
             {
                 path: '/chefs/:id',
-                element: <Chef></Chef>
+                element: <Chef></Chef>,
+                loader: ({params}) => fetch(`https://bangla-foods-server-nrsabit.vercel.app/chefs/${params.id}`)
             },
             {
                 path: '/recipe/:id',

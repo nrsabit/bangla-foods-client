@@ -27,7 +27,7 @@ const SingleChef = ({ chef }) => {
                     </Col>
                     <Col md={4} className='chef-card-details'>
                         <Card.Body>
-                        <Link to={`/chefs/${id}`}> <Button variant="outline-secondary">View Details</Button> </Link>
+                        <Link to={`/chefs/${id}`}> <Button variant="outline-secondary">View Recipes</Button> </Link>
                         </Card.Body>
                     </Col>
                 </Row>

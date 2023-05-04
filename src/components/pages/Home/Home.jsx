@@ -88,9 +88,6 @@ const Home = () => {
                     </Col>
                 </Row>
             </Container>
-
-            {/* Footer Section  */}
-            <Footer></Footer>
         </div>
     );
 };
