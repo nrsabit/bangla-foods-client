@@ -15,7 +15,8 @@ import NotFound from "../pages/NotFound/NotFound";
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('https://bangla-foods-server-nrsabit.vercel.app/chefs')
             },
             {
                 path: '/chefs/:id',
