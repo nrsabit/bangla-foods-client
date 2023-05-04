@@ -1,6 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import Recipe from '../Recipe/Recipe';
+import LazyLoad from 'react-lazy-load';
 
 const Chef = () => {
     const chef = useLoaderData()
@@ -11,7 +12,9 @@ const Chef = () => {
             <Container className="mt-3 p-3 bg-light rounded">
                 <Row className="align-items-center">
                     <Col md={6}>
-                        <img src={profile_image} alt="Chef Image" className="img-fluid rounded" />
+                        <LazyLoad>
+                            <img src={profile_image} alt="Chef Image" className="img-fluid rounded" />
+                        </LazyLoad>
                     </Col>
                     <Col md={6}>
                         <div className="text-center text-md-left">
@@ -30,7 +33,7 @@ const Chef = () => {
 
             {/* Chef Recipes  */}
             <Container className="mt-3 p-3 bg-light rounded">
-            <h2 className='orange fs-1 mt-3 fs-1 my-3 text-center'>Recipes</h2>
+                <h2 className='orange fs-1 mt-3 fs-1 my-3 text-center'>Recipes</h2>
                 <Row>
                     {recipes.map(recipe => <Recipe key={recipe.id} recipe={recipe}></Recipe>)}
                 </Row>

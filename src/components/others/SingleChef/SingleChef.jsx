@@ -2,15 +2,18 @@ import React from 'react';
 import { Button, Card, Col, Image, Row } from 'react-bootstrap';
 import './SingleChef.css'
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
 const SingleChef = ({ chef }) => {
-    const {id, num_recipes, profile_image, title, total_likes, years_of_experience} = chef;
+    const { id, num_recipes, profile_image, title, total_likes, years_of_experience } = chef;
     return (
         <div>
             <Card className="mb-3">
                 <Row>
                     <Col md={4}>
-                        <Image className='rounded' src={profile_image} fluid />
+                        <LazyLoad>
+                            <Image className='rounded' src={profile_image} fluid />
+                        </LazyLoad>
                     </Col>
                     <Col md={4} className='chef-card-details'>
                         <Card.Body>
@@ -27,7 +30,7 @@ const SingleChef = ({ chef }) => {
                     </Col>
                     <Col md={4} className='chef-card-details'>
                         <Card.Body>
-                        <Link to={`/chefs/${id}`}> <Button variant="outline-secondary">View Recipes</Button> </Link>
+                            <Link to={`/chefs/${id}`}> <Button variant="outline-secondary">View Recipes</Button> </Link>
                         </Card.Body>
                     </Col>
                 </Row>
