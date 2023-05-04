@@ -30,20 +30,12 @@ const AuthProvider = ({ children }) => {
 
     const googleSignIn = () =>{
         setLoader(true)
-        signInWithPopup(auth, googleProvider)
-        .then(result => result.user)
-        .catch(error => error.message)
+        return signInWithPopup(auth, googleProvider)
     }
 
     const githubSignIn = () =>{
         setLoader(true)
-        signInWithPopup(auth, githubProvider)
-        .then(result => {
-            const credential = GithubAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken
-            const user = result.user
-        })
-        .catch(error => error.message)
+        return signInWithPopup(auth, githubProvider)
     }
 
     const logOut = () => {
@@ -53,8 +45,9 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, loggedUser => {
-            setUser(loggedUser);
             setLoader(false);
+            // setUser(loggedUser)
+            console.log(loggedUser)
         })
 
         return () => {
