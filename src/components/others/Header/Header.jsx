@@ -20,8 +20,9 @@ const Header = () => {
                             <ActiveLink to="/blogs">Blogs</ActiveLink>
                         </Nav>
                         <Nav>
-                            {user ? <Nav.Link>
+                            {user ? <Nav.Link className='user-profile-icon'>
                                 <FaUserCircle></FaUserCircle>
+                                <p className='user-profile-name'>{user.displayName}</p>
                             </Nav.Link> :
                                 <Link to="/login">
                                     <Button variant="outline-dark">Login</Button>

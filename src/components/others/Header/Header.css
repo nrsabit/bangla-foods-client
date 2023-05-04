@@ -18,3 +18,16 @@
     margin-right: 10px;
     color: black;
 }
+.user-details-container{
+    display: flex;
+}
+.user-profile-name{
+    display: none;
+}
+.user-profile-icon{
+    display: flex;
+    align-items: center;
+}
+.user-profile-icon:hover .user-profile-name{
+    display: block;
+}

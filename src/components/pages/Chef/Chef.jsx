@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import Recipe from '../Recipe/Recipe';
