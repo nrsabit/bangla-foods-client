@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col } from 'react-bootstrap';
-import { BsFillBookmarkFill } from 'react-icons/bs';
+import { FcLike } from 'react-icons/fc';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -25,7 +25,7 @@ const Recipe = ({recipe}) => {
                     {ingredients.map(ing => <p key={ing}>{ing}</p>)}
                     <h5>Cooking Method: </h5>
                     <p>{cooking_method}</p>
-                    {favourite ? <button style={{border: 'none', background: 'white', border: 'none'}} disabled><BsFillBookmarkFill></BsFillBookmarkFill></button> : <button style={{border: 'none', background: 'white', border: 'none'}} onClick={handleFavourite}><BsFillBookmarkFill></BsFillBookmarkFill></button>}
+                    {favourite ? <button style={{border: 'none', background: 'white', border: 'none'}} disabled><FcLike></FcLike></button> : <button style={{border: 'none', background: 'white', border: 'none'}} onClick={handleFavourite}><FcLike></FcLike></button>}
                     <ToastContainer />
                 </Card.Body>
             </Card>

@@ -13,7 +13,7 @@ const Home = () => {
             <Container className='mt-4 bg-light p-3 rounded'>
                 <Row>
                     <Col xs={12} md={6}>
-                        <Image className='rounded' src="https://madscookhouse.com/wp-content/uploads/2020/12/Hyderabadi-Kacchi-Chicken-Dum-Biryani.jpg" fluid />
+                        <Image className='rounded w-100' src="https://madscookhouse.com/wp-content/uploads/2020/12/Hyderabadi-Kacchi-Chicken-Dum-Biryani.jpg" />
                     </Col>
                     <Col xs={12} md={6} className='banner-headings'>
                         <h2 className='orange fs-1 mt-3'>Welcome to BanglaFoods</h2>
@@ -82,7 +82,7 @@ const Home = () => {
                     </Col>
                     <Col md={6}>
                         <div className="d-flex align-items-center justify-content-center h-100">
-                            <img className='rounded about-img' src="https://geekrobocook.com/wp-content/uploads/2021/04/Macher-jhol.jpg" alt="Image" fluid />
+                            <img className='rounded about-img' src="https://geekrobocook.com/wp-content/uploads/2021/04/Macher-jhol.jpg" alt="Image" />
                         </div>
                     </Col>
                 </Row>

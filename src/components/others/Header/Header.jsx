@@ -22,7 +22,7 @@ const Header = () => {
                         <Nav>
                             {user ? <Nav.Link className='user-profile-icon'>
                                 <FaUserCircle></FaUserCircle>
-                                <p className='user-profile-name'>{user.displayName}</p>
+                                <p className='user-profile-name mb-0 ms-3'>{user.displayName}</p>
                             </Nav.Link> :
                                 <Link to="/login">
                                     <Button variant="outline-dark">Login</Button>

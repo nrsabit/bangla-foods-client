@@ -54,7 +54,6 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
-    console.log('User from AuthProvider 57: ', user)
     const authInfo = {
         createUser,
         updateUserDetails,

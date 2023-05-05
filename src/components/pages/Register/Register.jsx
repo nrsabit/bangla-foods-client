@@ -18,14 +18,16 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         createUser(email, password)
-            .then(result => navigate('/'))
+            .then(result => {
+                updateUserDetails(name, photo)
+                navigate('/')
+            } )
             .catch(error => {
                 setError(error.message);
                 if (password.length < 6) {
                     setError('Password should be at least 6 characters')
                 }
             })
-        updateUserDetails(name, photo)
     };
 
     return (

@@ -12,20 +12,18 @@ const SingleChef = ({ chef }) => {
                 <Row>
                     <Col md={4}>
                         <LazyLoad>
-                            <Image className='rounded' src={profile_image} fluid />
+                            <Image className='rounded w-100' src={profile_image} />
                         </LazyLoad>
                     </Col>
                     <Col md={4} className='chef-card-details'>
                         <Card.Body>
                             <Card.Title className='orange fs-1'>{title}</Card.Title>
-                            <Card.Text>
-                                <h5>Years of Experience:</h5>
-                                <p className='orange'>{years_of_experience}</p>
-                                <h5>Numbers of Recipes:</h5>
-                                <p className='orange'>{num_recipes}</p>
-                                <h5>Likes:</h5>
-                                <p className='orange'>{total_likes}</p>
-                            </Card.Text>
+                            <h5>Years of Experience:</h5>
+                            <p className='orange'>{years_of_experience}</p>
+                            <h5>Numbers of Recipes:</h5>
+                            <p className='orange'>{num_recipes}</p>
+                            <h5>Likes:</h5>
+                            <p className='orange'>{total_likes}</p>
                         </Card.Body>
                     </Col>
                     <Col md={4} className='chef-card-details'>
